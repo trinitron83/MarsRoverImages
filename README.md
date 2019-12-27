@@ -26,3 +26,7 @@
 #### Returns:
 
 * All photo data for dates in file
+
+### /api/index
+
+* page to display images in browser
