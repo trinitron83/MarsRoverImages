@@ -17,8 +17,8 @@ namespace MarsRoverImages.Controllers
     {
         string baseUrl = "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date=%date%&api_key=DEMO_KEY";
 
-        [Route("getimagesforday")]
-        public async Task<List<byte[]>> GetImagesForDay(string dateParam)
+        [Route("getimagesfordate")]
+        public async Task<List<byte[]>> GetImagesForDate(string dateParam)
         {
             
             var result = new List<byte[]>(); 
@@ -90,7 +90,7 @@ namespace MarsRoverImages.Controllers
             {
                 try
                 {
-                    var dateImage = await GetImagesForDay(line);
+                    var dateImage = await GetImagesForDate(line);
                     foreach (var image in dateImage)
                     {
                         result.Add(image);

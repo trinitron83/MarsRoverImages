@@ -1,0 +1,41 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        <input type="text" id="dateInput" placeholder="Enter a date"/>
+        <button id="getImagesForDate">Get Images</button>
+        <div class="spinner"></div>
+    </div>
+    <div id="imageContainer"></div>
+    <script>
+        $(document).ready(function () {
+            $('#getImagesForDate').click(function () {
+                $.ajax({
+                    method: 'get',
+                    url: 'roverimages/getimageurls?dateParam=' + $('#dateInput').val(),
+                    success: function (resultList) {
+                        $('#imageContainer').html('');
+                        for (i = 0; i < resultList.length; i++) {
+                            $('#imageContainer').append('<img src="' + resultList[i] + '" />');
+                        }
+                    },
+                    error: function () { }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
